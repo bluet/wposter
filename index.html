@@ -1,19 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Hello World!</title>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-    <!-- All of the Node.js APIs are available in this renderer process. -->
-    We are using Node.js <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
 
-    <script>
-      // You can also require other files to run in this process
-      require('./renderer.js')
-    </script>
-  </body>
+    <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="index.css">
+        <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <script type="text/javascript" src="renderer.js"></script>
+        <title>Hello World!</title>
+    </head>
+
+    <body>                          
+
+        <div id="container" class="container mycontainer">    
+
+            <div class="custom-file myfilecontainer">
+
+                <!-- <label class="" for="customFile">Choose file</label> -->
+                <input type="file" class="custom-file-input" id="customFile" onchange="handleFiles(this.files)">
+
+            </div>
+
+        </div>
+
+        <script>
+        // You can also require other files to run in this process
+        require('./renderer.js')
+        </script>
+
+    </body>
+
 </html>

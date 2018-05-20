@@ -1,0 +1,9 @@
+
+.mycontainer {
+	background-color: yellow;
+	text-align: center;
+}
+
+.myfilecontainer input {
+	margin: 0 auto;
+}

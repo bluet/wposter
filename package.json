@@ -4,12 +4,14 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "node main.js"
+    "start": "electron ."
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "csvtojson": "^1.1.12",
-    "wordpress": "^1.4.1"
+    "electron": "^2.0.1",
+    "wordpress": "^1.4.1",
+    "wpapi": "^1.1.2"
   }
 }
