@@ -7,5 +7,9 @@
     "start": "node main.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "csvtojson": "^1.1.12",
+    "wordpress": "^1.4.1"
+  }
 }
