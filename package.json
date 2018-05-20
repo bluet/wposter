@@ -11,7 +11,6 @@
   "dependencies": {
     "csvtojson": "^1.1.12",
     "electron": "^2.0.1",
-    "wordpress": "^1.4.1",
-    "wpapi": "^1.1.2"
+    "wordpress": "^1.4.1"
   }
 }
