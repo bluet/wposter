@@ -44,15 +44,15 @@ function myfile(File) {
   		
   		for(let i in jsonArrayObj){
 
-			let time = jsonArrayObj[i]['date tag as YYYYMM'];
-			let image = jsonArrayObj[i]['field6'];
-			let title = jsonArrayObj[i]['field12'];
+			let time    = jsonArrayObj[i]['date tag as YYYYMM'];
+			let image   = jsonArrayObj[i]['field6'];
+			let title   = jsonArrayObj[i]['field12'];
 
 			let context = jsonArrayObj[i]['field9'] + '\n' +
 					  jsonArrayObj[i]['field12'] + '\n' +
 					  jsonArrayObj[i]['field4'];
 		
-			let tag = [jsonArrayObj[i]['field7'],
+			let tags     = [jsonArrayObj[i]['field7'],
 					jsonArrayObj[i]['field8'],
 					jsonArrayObj[i]['field9'],
 					jsonArrayObj[i]['field10']]
@@ -62,10 +62,18 @@ function myfile(File) {
 				"image" : image,
 				"title" : title,
 				"context" : context,
-				"tag" : tag
+				"tags" : tags
 			})
-			console.log(context);
+			// console.log(context);
 		}
-		console.log(format_data);
+
+		// show data in console
+		for(let i in format_data){
+			console.log('this is data : '+i)
+			console.log('title : '+format_data[i].title);
+			console.log('context : '+format_data[i].context);
+			console.log('tags : '+format_data[i].tags);
+			console.log('\n\n');
+		}
   	})
 }
