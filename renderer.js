@@ -54,7 +54,7 @@ var format_data = [];
 csv().fromFile(tmp_path).on("end_parsed", function(jsonArrayObj) {
 	// console.log(jsonArrayObj[0]['date tag as YYYYMM']);
 
-	
+	// console.log(jsonArrayObj)
 
 	for(let i in jsonArrayObj){
 
@@ -85,3 +85,6 @@ csv().fromFile(tmp_path).on("end_parsed", function(jsonArrayObj) {
 })
 
 console.log(format_data)
+
+
+// exports.format_data = format_data;
