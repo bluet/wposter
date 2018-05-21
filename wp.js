@@ -1,21 +1,24 @@
+// s105213007@ncnu.edu.tw
 var wordpress = require( "wordpress" );
 var client = wordpress.createClient({
-    url: "your_url/",
-    username: "x",
-    password: "x"
+    url: "https://ppsn8787.wordpress.com/",
+    username: "ppsn8787",
+    password: "ilovesn87"
 });
  
 client.getPosts(function( error, posts ) {
     console.log( "Found " + posts.length + " posts!" );
-    console.log(posts);
 });
 
 
 client.newPost({
     title: "My First Post",
     content: "Controlling WordPress from node.js sure is fun!",
-    status: 'publishPosts',
-    type: 'post'
+    status: "publish",
+    termNames: {
+		"category": ["Javascript", "Node"],
+		"post_tag": ["api", "fun", "js"]
+    }
 }, function( error, id ) {
     console.log( id );
 });
