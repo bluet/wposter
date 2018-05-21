@@ -2,8 +2,12 @@
 // be executed in the renderer process for that window.
 // All of the Node.js APIs are available in this process.
 
-function myfile() {
+function myfile(File) {
+
+
 	var x = document.getElementById('customFile');
+	console.log(x.files[0].path);
+
 	var txt = '';
 	if ('files' in x) {
 		if (x.files.length != 0) {
@@ -19,6 +23,13 @@ function myfile() {
 	}
 
 	document.getElementById("demo").innerHTML = txt;
-	console.log(x);
-	
+	// console.log(x);
+
+	var csv = require("csvtojson");
+	csv()
+  	.fromFile(x.files[0].path)
+  	.on("end_parsed", function(jsonArrayObj) {
+  		console.log(jsonArrayObj);
+  	})
+ 
 }
