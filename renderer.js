@@ -1,6 +1,14 @@
 // This file is required by the index.html file and will
 // be executed in the renderer process for that window.
 // All of the Node.js APIs are available in this process.
+var wordpress = require( "wordpress" );
+var client = wordpress.createClient({
+    url: "https://ppsn8787.wordpress.com/",
+    username: "ppsn8787",
+    password: "ilovesn87"
+});
+
+var format_data = [];
 
 function myfile(File) {
 
@@ -36,26 +44,27 @@ function myfile(File) {
 	// 'field10'            : is tag 3 
 	// 'field11'            : is tag 4
 
-	var format_data = [];
+	
 	
 	var csv = require("csvtojson");
 	csv().fromFile(x.files[0].path).on("end_parsed", function(jsonArrayObj) {
-		console.log(jsonArrayObj);
+		// console.log(jsonArrayObj);
   		
   		for(let i in jsonArrayObj){
 
 			let time    = jsonArrayObj[i]['date tag as YYYYMM'];
 			let image   = jsonArrayObj[i]['field6'];
-			let title   = jsonArrayObj[i]['field12'];
+			let title   = jsonArrayObj[i]['field5'];
 
-			let context = jsonArrayObj[i]['field9'] + '\n' +
-					  jsonArrayObj[i]['field12'] + '\n' +
-					  jsonArrayObj[i]['field4'];
+			let context =   '<img src="' + jsonArrayObj[i]['field6'] + '" />'  + '\n\n' +
+							jsonArrayObj[i]['field9']  + '\n\n' +
+					  		jsonArrayObj[i]['field12'] + '\n\n' +
+					 		jsonArrayObj[i]['field4'];
 		
 			let tags     = [jsonArrayObj[i]['field7'],
 					jsonArrayObj[i]['field8'],
-					jsonArrayObj[i]['field9'],
-					jsonArrayObj[i]['field10']]
+					jsonArrayObj[i]['field10'],
+					jsonArrayObj[i]['field11']]
 		
 			format_data.push({
 				"time" : time,
@@ -76,4 +85,26 @@ function myfile(File) {
 			console.log('\n\n');
 		}
   	})
+}
+
+function postToWP(){
+
+	for(let i in format_data){
+		client.newPost({
+			title: format_data[i].title,
+			content: format_data[i].context,
+			status: "publish",
+			termNames: {
+				"post_tag": format_data[i].tags
+			}
+		}, function( error, id ) {
+			console.log( id );
+		});
+
+		if(i==5){
+			break;
+		}
+	}
+
+
 }

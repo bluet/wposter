@@ -6,9 +6,9 @@ var client = wordpress.createClient({
     password: "ilovesn87"
 });
  
-client.getPosts(function( error, posts ) {
-    console.log( "Found " + posts.length + " posts!" );
-});
+// client.getPosts(function( error, posts ) {
+//     console.log( "Found " + posts.length + " posts!" );
+// });
 
 
 client.newPost({
