@@ -50,19 +50,38 @@ function myfile(File) {
 
 
 var tmp_path = '/Users/yiyuchang/Desktop/dev/EDQblogbot - 工作表1.csv';
+var format_data = [];
 csv().fromFile(tmp_path).on("end_parsed", function(jsonArrayObj) {
 	// console.log(jsonArrayObj[0]['date tag as YYYYMM']);
 
+	
+
 	for(let i in jsonArrayObj){
 
-		let title   = jsonArrayObj[i]['12']
+		let time    = jsonArrayObj[i]['date tag as YYYYMM'];
+		let image    = jsonArrayObj[i]['field6'];
+		let title   = jsonArrayObj[i]['field12'];
 
 		let context = jsonArrayObj[i]['field9'] + '\n' +
 					  jsonArrayObj[i]['field12'] + '\n' +
 					  jsonArrayObj[i]['field4'];
 		
+		let tag     = [ jsonArrayObj[i]['field7'],
+						jsonArrayObj[i]['field8'],
+						jsonArrayObj[i]['field9'],
+						jsonArrayObj[i]['field10']]
+		
+		format_data.push({
+			"time" : time,
+			"image" : image,
+			"title" : title,
+			"context" : context,
+			"tag" : tag
+		})
 		// console.log(context);
 	}
 
-	console.log(jsonArrayObj)
+	// console.log(jsonArrayObj)
 })
+
+console.log(format_data)
