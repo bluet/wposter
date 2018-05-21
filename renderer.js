@@ -1,6 +1,7 @@
 // This file is required by the index.html file and will
 // be executed in the renderer process for that window.
 // All of the Node.js APIs are available in this process.
+var csv = require("csvtojson");
 
 function myfile(File) {
 
@@ -21,13 +22,47 @@ function myfile(File) {
 		}
 	}
 
-	document.getElementById("demo").innerHTML = txt;
-	// console.log(x);
+	
 
-	var csv = require("csvtojson");
-	csv().fromFile(x.files[0].path).on("end_parsed", function(jsonArrayObj) {
-		console.log(jsonArrayObj);
-		document.getElementById("json_context").innerHTML = jsonArrayObj;
-  	})
- 
+	document.getElementById("demo").innerHTML = txt;
+
+	
+	// csv().fromFile(x.files[0].path).on("end_parsed", function(jsonArrayObj) {
+	// 	console.log(jsonArrayObj);
+  	// })
+
+
+
 }
+
+// 'date tag as YYYYMM' : is time 
+// 'field6'             : is image
+// 'field5'             : is title
+
+// 'field9'             : is context 1
+// 'field12'            : is context 2
+// 'field4'             : is context 3
+
+// 'field7'             : is tag 1
+// 'field8'             : is tag 2
+// 'field10'            : is tag 3 
+// 'field11'            : is tag 4
+
+
+var tmp_path = '/Users/yiyuchang/Desktop/dev/EDQblogbot - 工作表1.csv';
+csv().fromFile(tmp_path).on("end_parsed", function(jsonArrayObj) {
+	// console.log(jsonArrayObj[0]['date tag as YYYYMM']);
+
+	for(let i in jsonArrayObj){
+
+		let title   = jsonArrayObj[i]['12']
+
+		let context = jsonArrayObj[i]['field9'] + '\n' +
+					  jsonArrayObj[i]['field12'] + '\n' +
+					  jsonArrayObj[i]['field4'];
+		
+		// console.log(context);
+	}
+
+	console.log(jsonArrayObj)
+})
