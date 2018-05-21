@@ -4,7 +4,6 @@
 
 function myfile(File) {
 
-
 	var x = document.getElementById('customFile');
 	console.log(x.files[0].path);
 
@@ -26,10 +25,9 @@ function myfile(File) {
 	// console.log(x);
 
 	var csv = require("csvtojson");
-	csv()
-  	.fromFile(x.files[0].path)
-  	.on("end_parsed", function(jsonArrayObj) {
-  		console.log(jsonArrayObj);
+	csv().fromFile(x.files[0].path).on("end_parsed", function(jsonArrayObj) {
+		console.log(jsonArrayObj);
+		document.getElementById("json_context").innerHTML = jsonArrayObj;
   	})
  
 }

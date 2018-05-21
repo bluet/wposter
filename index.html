@@ -18,10 +18,14 @@
 
                 <!-- <label class="" for="customFile">Choose file</label> -->
                 <form  method="POST" name="R">
-                    <input type="file" id="customFile" name="F1" class="custom-file-input">
+                    <input type="file" accept=".csv" id="customFile" name="F1" class="custom-file-input">
                     <input type="button" value="upload" onclick="myfile(document.R.F1)">
                     <p id="demo"></p>
                 </form>    
+            </div>
+
+            <div>
+                <p id="json_context"></p>
             </div>
 
         </div>
