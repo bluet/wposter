@@ -21,20 +21,24 @@
                     <input type="file" accept=".csv" id="customFile" name="F1" class="custom-file-input">
                     <input type="button" value="upload" onclick="myfile(document.R.F1)">
                     <input type="button" value="post!" onclick="postToWP()">
-                    <input type="button" value="show" onclick="show()">
                     <p id="demo"></p>
                 </form>    
             </div>
 
-            <div id="json_context">
-            </div>
+            <div>
+                <p id="json_context"></p>
+            </div>  
+
+            <% if (user) { %>
+                <h3>Hello there <%= user.name %></h3>
+            <% } %>
 
         </div>
 
-        <script>
+        <!-- <script>
         // You can also require other files to run in this process
         require('./renderer.js')
-        </script>
+        </script> -->
 
     </body>
 

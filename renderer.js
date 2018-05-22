@@ -2,13 +2,15 @@
 // be executed in the renderer process for that window.
 // All of the Node.js APIs are available in this process.
 var wordpress = require( "wordpress" );
+var format_data = [];
 var client = wordpress.createClient({
     url: "https://ppsn8787.wordpress.com/",
     username: "ppsn8787",
     password: "ilovesn87"
 });
 
-var format_data = [];
+
+
 
 function myfile(File) {
 
@@ -84,7 +86,20 @@ function myfile(File) {
 			console.log('tags : '+format_data[i].tags);
 			console.log('\n\n');
 		}
-  	})
+	})
+	
+}
+
+
+function show(){
+
+	for(let i in format_data){
+		document.getElementById('json_context').innerHTML = i;
+		document.getElementById('json_context').innerHTML = format_data[i].title;
+		document.getElementById('json_context').innerHTML = format_data[i].context;
+		document.getElementById('json_context').innerHTML = format_data[i].tags;
+	}
+
 }
 
 function postToWP(){
@@ -105,6 +120,5 @@ function postToWP(){
 			break;
 		}
 	}
-
 
 }
