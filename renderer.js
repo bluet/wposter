@@ -111,6 +111,8 @@ function show(){
 
 	$("form.showInfoForm").html(stream);	
 
+	format_data = [];
+
 }
 
 function postToWP(){
