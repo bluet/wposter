@@ -106,5 +106,4 @@ function postToWP(){
 		}
 	}
 
-
 }
