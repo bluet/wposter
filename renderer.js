@@ -10,28 +10,10 @@ var client = wordpress.createClient({
 });
 
 
-
-
 function myfile(File) {
 
 	var x = document.getElementById('customFile');
 	console.log(x.files[0].path);
-
-	var txt = '';
-	if ('files' in x) {
-		if (x.files.length != 0) {
-			txt += "<br><strong>" + 1 + ". file</strong><br>";
-			var file = x.files[0];
-            if ('name' in file) {
-                txt += "name: " + file.name + "<br>";
-            }
-            if ('size' in file) {
-                txt += "size: " + file.size + " bytes <br>";
-            }
-		}
-	}
-
-	document.getElementById("demo").innerHTML = txt;
 
 	// 'date tag as YYYYMM' : is time 
 	// 'field6'             : is image
@@ -62,21 +44,37 @@ function myfile(File) {
 							jsonArrayObj[i]['field9']  + '\n\n' +
 					  		jsonArrayObj[i]['field12'] + '\n\n' +
 					 		jsonArrayObj[i]['field4'];
+
+							
 		
 			let tags     = [jsonArrayObj[i]['field7'],
 					jsonArrayObj[i]['field8'],
 					jsonArrayObj[i]['field10'],
 					jsonArrayObj[i]['field11']]
+			
+			//the following properties are for preview
+			let contextWithoutImg = jsonArrayObj[i]['field9']  + '\n\n' +
+					  				jsonArrayObj[i]['field12'] + '\n\n' +
+					 				jsonArrayObj[i]['field4']; 
+
+			let firstText = jsonArrayObj[i]['field9'];
+			let secText = jsonArrayObj[i]['field12'];
+			let thirdText = jsonArrayObj[i]['field4'];
 		
 			format_data.push({
 				"time" : time,
 				"image" : image,
 				"title" : title,
 				"context" : context,
+				"contextWithoutImg" : contextWithoutImg,
+				"firstText" : firstText,
+				"secText" : secText,
+				"thirdText" : thirdText,
 				"tags" : tags
 			})
-			// console.log(context);
 		}
+
+		show();
 
 		// show data in console
 		for(let i in format_data){
@@ -86,39 +84,59 @@ function myfile(File) {
 			console.log('tags : '+format_data[i].tags);
 			console.log('\n\n');
 		}
+
+		
 	})
+
 	
 }
 
-
 function show(){
 
-	for(let i in format_data){
-		document.getElementById('json_context').innerHTML = i;
-		document.getElementById('json_context').innerHTML = format_data[i].title;
-		document.getElementById('json_context').innerHTML = format_data[i].context;
-		document.getElementById('json_context').innerHTML = format_data[i].tags;
+
+	let stream = "";
+
+	for (let i in format_data) {
+
+		stream += "<input type=\"checkbox\" id=\"" + i + "\" checked/>"
+			 + "<p>" + ++i + ".</p>"
+			 + "<p>" + format_data[--i].title + "</p>"
+			 + "<p><img src=\"" + format_data[i].image + "\"></img></p><br>"
+			 + "<p>" + format_data[i].firstText + "</p>"
+			 + "<p>" + format_data[i].secText + "</p>"
+			 + "<p><a href=\"" + format_data[i].thirdText + "\" target=\"#\">" + format_data[i].thirdText + "</a></p>"
+			 + "<p>" + format_data[i].tags + "</p><br><br>";
+
 	}
+
+	$("form.showInfoForm").html(stream);	
 
 }
 
 function postToWP(){
 
-	for(let i in format_data){
+	var upload_data = [];
+
+	for (let i in format_data) {
+		if(document.getElementById(i).checked) {
+			upload_data.push(format_data[i]);
+		}
+	}
+
+	console.log(upload_data);
+
+	for(let i in upload_data){
 		client.newPost({
-			title: format_data[i].title,
-			content: format_data[i].context,
+			title: upload_data[i].title,
+			content: upload_data[i].context,
 			status: "publish",
 			termNames: {
-				"post_tag": format_data[i].tags
+				"post_tag": upload_data[i].tags
 			}
 		}, function( error, id ) {
 			console.log( id );
 		});
 
-		if(i==5){
-			break;
-		}
 	}
 
 }
