@@ -30,3 +30,7 @@ p {
 	height: 600px;
 	overflow: auto
 }
+
+.inputbtn {
+	border-radius: 5px;
+}
