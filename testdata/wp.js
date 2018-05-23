@@ -53,7 +53,6 @@ client.newPost({
 		"post_tag": ["api", "fun", "js"]
     }
 },function( error , id){
-    
     // console.log(error);
     console.log(id);
     var file = fs.readFileSync( "test.png" );
@@ -63,19 +62,14 @@ client.newPost({
         bits: file,
         postId: id,
     },function( error, file ) {
+        console.dir(arguments)
         console.log( file );
-        
-        
         client.editPost(id,{thumbnail:
-            {thumbnail:id }
+            {thumbnail:245 }
         },function( error ){
             console.log(error);
         })
-    
     });
-    
-
-    
 });
 
 // client.editPost(posts[0].id, {thumbnail : { thumbnail : "http://xxxxxxxxxxxxx.org/wp-content/uploads/2017/07/japanese-rice-bowl-pottery-150x150.jpg" } }, function( error ) {})
