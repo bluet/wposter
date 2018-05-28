@@ -11,6 +11,9 @@ var client = wordpress.createClient({
 
 function myfile(File) {
 
+	$("#check-all").prop("disabled", true)
+	$("#not-check-all").prop("disabled", false)
+
 	var x = document.getElementById('customFile');
 	console.log(x.files[0].path);
 
@@ -33,6 +36,7 @@ function myfile(File) {
 	csv().fromFile(x.files[0].path).on("end_parsed", function(jsonArrayObj) {
 		// console.log(jsonArrayObj);
   		
+		format_data = [];
   		for(let i in jsonArrayObj){
 
 			let time    = jsonArrayObj[i]['date tag as YYYYMM'];
@@ -96,7 +100,6 @@ function myfile(File) {
 
 function show(){
 
-
 	let stream = "";
 
 	for (let i in format_data) {
@@ -119,8 +122,24 @@ function show(){
 
 	$("form.showInfoForm").html(stream);	
 
-	// format_data = [];
+}
 
+function unchecked() {
+	$("#check-all").prop("disabled", false)
+	$("#not-check-all").prop("disabled", true)
+	for (i in format_data) {
+		$("#" + i).prop("checked", false);
+		console.log(document.getElementById(i).style.checked)
+	}
+}
+
+function change() {
+	$("#check-all").prop("disabled", true)
+	$("#not-check-all").prop("disabled", false)
+	for (i in format_data) {
+		$("#" + i).prop("checked", true);
+		console.log(document.getElementById(i).style.checked)
+	}
 }
 
 
@@ -136,18 +155,18 @@ function postToWP(){
 	}
 	// console.log(upload_data);
 
-	// download images to local (./testdata/images/)
-	var file;
-	for (let i in upload_data){
-		// console.log(upload_data[i].image);
-		var options = {
-			url: upload_data[i].image,
-			dest: 'testdata/images/' + i + '.jpg'        // Save to /path/to/dest/photo.jpg
-		}
-		download.image(options).then(({ filename, image }) => {
-			console.log('File saved to /testdata/images/', filename)
-		}).catch((err) => {
-			throw err
+	console.log(upload_data);
+
+	for(let i in upload_data){
+		client.newPost({
+			title: upload_data[i].title,
+			content: upload_data[i].context,
+			status: "publish",
+			termNames: {
+				"post_tag": upload_data[i].tags
+			}
+		}, function( error, id ) {
+			console.log( id );
 		});
 
 		file = fs.readFileSync('testdata/images/' + i + '.jpg');

@@ -20,8 +20,10 @@
                 <form  method="POST" name="R">
 
                     <input class="inputbtn btn btn-info" type="file" accept=".csv" id="customFile" name="F1" class="custom-file-input">
-                    <input id="upload"class="inputbtn btn btn-primary" type="button" value="upload" onclick="myfile(document.R.F1)">
-                    <input class="inputbtn btn btn-warning" type="button" value="post!" onclick="postToWP()">
+                    <input id="upload"class="inputbtn btn btn-primary" type="button" value="預覽" onclick="myfile(document.R.F1)">
+                    <input id="not-check-all" class="inputbtn btn btn-warning" type="button" value="取消全選" onclick="unchecked()" disabled="true">
+                    <input id="check-all" class="inputbtn btn btn-warning" type="button" value="全選" onclick="change()" disabled="true">
+                    <input class="inputbtn btn btn-danger" type="button" value="上傳" onclick="postToWP()">
                 </form>    
             </div>
 
