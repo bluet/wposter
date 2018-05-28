@@ -45,8 +45,6 @@ function myfile(File) {
 					  		jsonArrayObj[i]['field12'] + '\n\n' +
 					 		jsonArrayObj[i]['field4'];
 
-							
-		
 			let tags     = [jsonArrayObj[i]['field7'],
 					jsonArrayObj[i]['field8'],
 					jsonArrayObj[i]['field10'],
@@ -60,17 +58,26 @@ function myfile(File) {
 			let firstText = jsonArrayObj[i]['field9'];
 			let secText = jsonArrayObj[i]['field12'];
 			let thirdText = jsonArrayObj[i]['field4'];
+
+			let tag1 = jsonArrayObj[i]['field7'];
+			let tag2 = jsonArrayObj[i]['field8'];
+			let tag3 = jsonArrayObj[i]['field10'];
+			let tag4 = jsonArrayObj[i]['field11'];
 		
 			format_data.push({
 				"time" : time,
 				"image" : image,
 				"title" : title,
 				"context" : context,
+				"tags" : tags,
 				"contextWithoutImg" : contextWithoutImg,
 				"firstText" : firstText,
 				"secText" : secText,
 				"thirdText" : thirdText,
-				"tags" : tags
+				"tag1" : tag1,
+				"tag2" : tag2,
+				"tag3" : tag3,
+				"tag4" : tag4
 			})
 		}
 
@@ -84,10 +91,8 @@ function myfile(File) {
 			console.log('tags : '+format_data[i].tags);
 			console.log('\n\n');
 		}
-
 		
 	})
-
 	
 }
 
@@ -98,14 +103,17 @@ function show(){
 
 	for (let i in format_data) {
 
-		stream += "<input type=\"checkbox\" id=\"" + i + "\" checked/>"
-			 + "<p>" + ++i + ".</p>"
-			 + "<p>" + format_data[--i].title + "</p>"
-			 + "<p><img src=\"" + format_data[i].image + "\"></img></p><br>"
-			 + "<p>" + format_data[i].firstText + "</p>"
-			 + "<p>" + format_data[i].secText + "</p>"
-			 + "<p><a href=\"" + format_data[i].thirdText + "\" target=\"#\">" + format_data[i].thirdText + "</a></p>"
-			 + "<p>" + format_data[i].tags + "</p><br><br>";
+		stream += "<label class=\"checkbox-inline\"><input type=\"checkbox\" id=\"" + i + "\" checked/>"
+			 + "<p class=\"preview_title\">" + ++i + ". " + format_data[--i].title + "</p>"
+			 + "<p><img  class=\"preview_img\" src=\"" + format_data[i].image + "\"></img></p><br>"
+			 + "<p class=\"preview_text\">" + format_data[i].firstText + "</p><br>"
+			 + "<p class=\"preview_text\">" + format_data[i].secText + "</p><br>"
+			 + "<p><a href=\"" + format_data[i].thirdText + "\" target=\"#\">" + format_data[i].thirdText + "</a></p><br>"
+			 + "<p class=\"preview_tag\">#" + format_data[i].tag1 + " &nbsp&nbsp#"
+			 		 + format_data[i].tag2 + " &nbsp&nbsp#"
+			 		 + format_data[i].tag3 + " &nbsp&nbsp#"
+			 		 + format_data[i].tag4
+			 		 + "</p></label><br><br>";
 
 	}
 

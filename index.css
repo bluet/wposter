@@ -1,20 +1,17 @@
 
 .mycontainer {
-	/*background-color: yellow;*/
-	text-align: center;
-	/*border-radius: 10px;*/
-	/*border:4px solid black;*/
+	/*text-align: center;*/
 	height: 375px;
 }
 
-.myfilecontainer input {
-	margin: 0 auto;
+.myfilecontainer {
+	margin: 20px 0px 0px 15px;
 }
 
-img {
-	width: 60%;
-	height: 60%;
+.myfilecontainer input {
+	margin: 5px 0px;
 }
+
 p {
 	text-align: justify;
 }
@@ -23,14 +20,46 @@ p {
 	text-align: left;
 }
 
-
 .demo-container {
+	/*color: white;*/
 	margin: 10px;
-	padding: 10px;
+	padding: 20px;
 	height: 600px;
-	overflow: auto
+	overflow: auto;
+	background-color: #e8e8e8;
+	border-radius: 2px;
+	border:1px solid black;
+	box-shadow: -1px -1px 2px #6b6b6b;
+	font-size: 15px;
+	letter-spacing: 0.1em;
+}
+	
+.preview_title {
+	font-size: 25px;
+	font-variant: small-caps;
+	font-family: American Typewriter, serif;
+	letter-spacing: 0.07em;
+	word-spacing: 0.25em;
+	/*font-style: oblique*/
+}	
+
+.preview_img {
+	width: 60%;
+	height: 60%;
+	border-radius: 5px;
+	border: 1px solid gray;
+	box-shadow:2px 2px 2px gray;
 }
 
-.inputbtn {
-	border-radius: 5px;
+.preview_text {
+	font-weight: bold;
+}
+
+.preview_tag {
+	font-weight: bold;
+	word-spacing: 0.25em;
+	letter-spacing: 0.2em;
+	font-style: oblique;
+
+	font-size: 15.25px;
 }
