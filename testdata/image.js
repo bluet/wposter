@@ -1,5 +1,5 @@
 const download = require('image-downloader')
-options = {
+var options = {
     url: 'http://www.yankodesign.com/images/design_news/2018/01/gamers-going-green/dor_layout.jpg',
     dest: './images/001.jpg'        // Save to /path/to/dest/photo.jpg
 }
