@@ -9,10 +9,15 @@ var client = wordpress.createClient({
 });
 
 
+function detectInput() {
+	$("#upload").prop("disabled", false)
+}
+
+
 function myfile(File) {
 
-	$("#check-all").prop("disabled", true)
 	$("#not-check-all").prop("disabled", false)
+	$("#send").prop("disabled", false)
 
 	var x = document.getElementById('customFile');
 	console.log(x.files[0].path);
