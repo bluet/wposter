@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="particles-js">
+        <div class="btext">
+            <h1>WP Poster</h1>
+            <p>Login your wordpress</p>
+            <form role="form">
+                <div class="form-group">
+                    <label for="wp_url">WP_URL:</label>
+                    <input type="text" class="form-control" id="wp_url" placeholder="Enter wordpress url">
+                </div>
+                <div class="form-group">
+                    <label for="usr_name">Username:</label>
+                    <input type="text" class="form-control" id="user_name" placeholder="Enter username">
+                </div>
+                <div class="form-group">
+                    <label for="pwd">Password:</label>
+                    <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox"> Remember me</label>
+                </div>
+                <!-- <button type="submit" class="btn btn-default">Submit</button> -->
+                <a type="submit" href="index.html" class="btn">Get Started</a>
+            </form>
+            <!-- <a href="index.html" class="btn">Get Started</a> -->
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <script>
+        particlesJS.load('particles-js', 'particles.json',
+        function(){
+            console.log('particles.json loaded...')
+        })
+    </script>
+</body>
+</html>
