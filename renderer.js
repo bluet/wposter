@@ -1,7 +1,6 @@
-// This file is required by the index.html file and will
-// be executed in the renderer process for that window.
-// All of the Node.js APIs are available in this process.
 var wordpress = require( "wordpress" );
+const download = require('image-downloader')
+var fs = require('fs');
 var format_data = [];
 var client = wordpress.createClient({
     url: "https://ppsn8787.wordpress.com/",
@@ -125,8 +124,10 @@ function show(){
 
 }
 
-function postToWP(){
 
+
+function postToWP(){
+	console.log('postTOWP ...');
 	var upload_data = [];
 
 	for (let i in format_data) {
@@ -134,21 +135,21 @@ function postToWP(){
 			upload_data.push(format_data[i]);
 		}
 	}
-
 	console.log(upload_data);
 
-	for(let i in upload_data){
-		client.newPost({
-			title: upload_data[i].title,
-			content: upload_data[i].context,
-			status: "publish",
-			termNames: {
-				"post_tag": upload_data[i].tags
-			}
-		}, function( error, id ) {
-			console.log( id );
-		});
-
+	
+	for (let i in upload_data){
+		console.log(i['image']);		
+		// var options = {
+		// 	url: 'http://www.yankodesign.com/images/design_news/2018/01/gamers-going-green/dor_layout.jpg',
+		// 	dest: './images/001.jpg'        // Save to /path/to/dest/photo.jpg
+		// }
+		// download.image(options).then(({ filename, image }) => {
+		// 	console.log('File saved to /testdata/images/', filename)
+		// }).catch((err) => {
+		// 	throw err
+		// })		
 	}
+
 
 }
