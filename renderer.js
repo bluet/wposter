@@ -82,14 +82,14 @@ function myfile(File) {
 
 		show();
 
-		// show data in console
-		for(let i in format_data){
-			console.log('this is data : '+i)
-			console.log('title : '+format_data[i].title);
-			console.log('context : '+format_data[i].context);
-			console.log('tags : '+format_data[i].tags);
-			console.log('\n\n');
-		}
+		// DEBUG : show data in console
+		// for(let i in format_data){
+		// 	console.log('this is data : '+i)
+		// 	console.log('title : '+format_data[i].title);
+		// 	console.log('context : '+format_data[i].context);
+		// 	console.log('tags : '+format_data[i].tags);
+		// 	console.log('\n\n');
+		// }
 		
 	})
 	
@@ -120,7 +120,7 @@ function show(){
 
 	$("form.showInfoForm").html(stream);	
 
-	format_data = [];
+	// format_data = [];
 
 }
 
@@ -135,21 +135,52 @@ function postToWP(){
 			upload_data.push(format_data[i]);
 		}
 	}
-	console.log(upload_data);
+	// console.log(upload_data);
 
-	
+	// download images to local (./testdata/images/)
+	var file;
 	for (let i in upload_data){
-		console.log(i['image']);		
-		// var options = {
-		// 	url: 'http://www.yankodesign.com/images/design_news/2018/01/gamers-going-green/dor_layout.jpg',
-		// 	dest: './images/001.jpg'        // Save to /path/to/dest/photo.jpg
-		// }
-		// download.image(options).then(({ filename, image }) => {
-		// 	console.log('File saved to /testdata/images/', filename)
-		// }).catch((err) => {
-		// 	throw err
-		// })		
+		// console.log(upload_data[i].image);
+		var options = {
+			url: upload_data[i].image,
+			dest: 'testdata/images/' + i + '.jpg'        // Save to /path/to/dest/photo.jpg
+		}
+		download.image(options).then(({ filename, image }) => {
+			console.log('File saved to /testdata/images/', filename)
+		}).catch((err) => {
+			throw err
+		});
+
+		file = fs.readFileSync('testdata/images/' + i + '.jpg');
+		client.authenticatedCall("wp.uploadFile",{
+			name: i + '.jpg',
+			type: "image/png",
+			bits: file,
+		},function (error, file_info) {
+			console.log("Return from uploadFile:");
+			console.dir(arguments);
+			client.newPost({
+				title: upload_data[i].title,
+				content: upload_data[i].content,
+				status: "publish",
+				thumbnail: file_info.id,
+				termNames: {
+					"post_tag": [upload_data[i].tag1,
+								 upload_data[i].tag2,
+								 upload_data[i].tag3,
+								 upload_data[i].tag4]
+				}
+			},
+			function ( error ) {
+				console.log("Return from newPost:");
+				console.dir(arguments);
+			});
+		}
+	);
+
 	}
+
+
 
 
 }
