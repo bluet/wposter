@@ -39,8 +39,7 @@ function myfile(File) {
 			let image   = jsonArrayObj[i]['field6'];
 			let title   = jsonArrayObj[i]['field5'];
 
-			let context =   '<img src="' + jsonArrayObj[i]['field6'] + '" />'  + '\n\n' +
-							jsonArrayObj[i]['field9']  + '\n\n' +
+			let content =   jsonArrayObj[i]['field9']  + '\n\n' +
 					  		jsonArrayObj[i]['field12'] + '\n\n' +
 					 		jsonArrayObj[i]['field4'];
 
@@ -67,7 +66,7 @@ function myfile(File) {
 				"time" : time,
 				"image" : image,
 				"title" : title,
-				"context" : context,
+				"content" : content,
 				"tags" : tags,
 				"contextWithoutImg" : contextWithoutImg,
 				"firstText" : firstText,
