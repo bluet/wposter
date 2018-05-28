@@ -104,16 +104,18 @@ function show(){
 	for (let i in format_data) {
 
 		stream += "<label class=\"checkbox-inline\"><input type=\"checkbox\" id=\"" + i + "\" checked/>"
-			 + "<p class=\"preview_title\">" + ++i + ". " + format_data[--i].title + "</p>"
+			 + "<p class=\"preview_id\">" + ++i + ".</p>"
+			 + "<p class=\"preview_title\">" + format_data[--i].title + "</p>"
 			 + "<p><img  class=\"preview_img\" src=\"" + format_data[i].image + "\"></img></p><br>"
 			 + "<p class=\"preview_text\">" + format_data[i].firstText + "</p><br>"
 			 + "<p class=\"preview_text\">" + format_data[i].secText + "</p><br>"
 			 + "<p><a href=\"" + format_data[i].thirdText + "\" target=\"#\">" + format_data[i].thirdText + "</a></p><br>"
-			 + "<p class=\"preview_tag\">#" + format_data[i].tag1 + " &nbsp&nbsp#"
+			 + "<p class=\"preview_tag\">#"
+			 		 + format_data[i].tag1 + " &nbsp&nbsp#"
 			 		 + format_data[i].tag2 + " &nbsp&nbsp#"
 			 		 + format_data[i].tag3 + " &nbsp&nbsp#"
 			 		 + format_data[i].tag4
-			 		 + "</p></label><br><br>";
+			 		 + "<hr class=\"preview_divider\"></hr></p></label>";
 
 	}
 
