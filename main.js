@@ -13,7 +13,7 @@ function createWindow () {
   mainWindow = new BrowserWindow({width: 800, height: 700})
 
   mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'index.html'),
+    pathname: path.join(__dirname, 'login.html'),
     protocol: 'file:',
     slashes: true
   }))

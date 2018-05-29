@@ -158,7 +158,6 @@ function postToWP(){
 			upload_data.push(format_data[i]);
 		}
 	}
-	// console.log(upload_data);
 
 	console.log(upload_data);
 
