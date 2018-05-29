@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="./login.js"></script>
 </head>
 <body>
     <div id="particles-js">
@@ -23,13 +25,11 @@
                 </div>
                 <div class="form-group">
                     <label for="pwd">Password:</label>
-                    <input type="password" class="form-control" id="pwd" placeholder="Enter password">
-                </div>
-                <div class="checkbox">
-                    <label><input type="checkbox"> Remember me</label>
+                    <input type="password" class="form-control" id="passwd" placeholder="Enter password">
                 </div>
                 <!-- <button type="submit" class="btn btn-default">Submit</button> -->
-                <a type="submit" href="index.html" class="btn">Get Started</a>
+                <!-- <a class="btn" onclick"loginWP()">Login</a> -->
+                <button type="button" class="btn btn-md btn-info" onclick="loginWP()">Login</button>
             </form>
             <!-- <a href="index.html" class="btn">Get Started</a> -->
         </div>
