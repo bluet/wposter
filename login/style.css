@@ -8,7 +8,7 @@ body{
     color: #f9f3f4;
     position: absolute;
     text-align: center;
-    top: 40%;
+    top: 30%;
     width: 100%;
     line-height: 0.4em;
 }
@@ -34,4 +34,55 @@ h1{
 #particles-js{
     background-image: url('image1.jpg');
     height: 100vh;
+}
+
+#main-form {
+    margin: 10px auto;
+    /*background-color: yellow;*/
+}
+
+.input-form {
+    margin: 30px;
+}
+
+.input-form input{
+    border-radius: 5px;
+}
+
+.input-form input:hover {
+    border-radius: 0px;
+    /*box-shadow: 1px 1px 1px black;*/
+}
+
+#wp_url {
+    position: relative;
+    left: 13px;
+}
+
+#pwd {
+    position: relative;
+    left: 9px;
+}
+
+#user_name {
+    position: relative;
+    left: 7px;
+}
+
+
+
+
+#wp_url_label {
+    position: relative;
+    left: -7.5px;
+}
+
+#user_name_label {
+    position: relative;
+    left: -1px;
+}
+
+#pwd_label {
+    position: relative;
+    left: -3px;
 }
