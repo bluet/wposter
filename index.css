@@ -5,10 +5,10 @@
 .myfilecontainer {
 	margin:20px 10px 10px;
 	background-color: gray;
-	padding: 10px;
+	padding: 5px 0px 5px 17px;
 	border-radius: 5px;
 	background: linear-gradient(135deg,
-	 #bfbfbf 40%, white 47%);
+	 #bfbfbf 40%, white 70%);
 }
 
 .myfilecontainer input {
@@ -19,11 +19,24 @@
 	text-align: left;
 }
 
+.custom-file-input {
+	float: left;
+	width: 200px;
+	position: relative;
+	left: -5px;
+}
+
+#upload, #check-all, #not-check-all, #send {
+	position: relative;
+	height: 36px
+}
+
 .demo-container {
 	/*color: white;*/
+
 	margin: 10px;
 	padding: 20px;
-	height: 483px;
+	height: 537px;
 	overflow: auto;
 	background-color: #e8e8e8;
 	border-radius: 2px;
