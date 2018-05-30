@@ -2,6 +2,14 @@ var wordpress = require( "wordpress" );
 const download = require('image-downloader')
 var fs = require('fs');
 var format_data = [];
+
+var login_data = require("./login/login.js");
+
+//cannot print value : undefined
+console.log(login_data.url)
+console.log(login_data.pwd)
+console.log(login_data.uname)
+
 var client = wordpress.createClient({
     url: "https://ppsn8787.wordpress.com/",
     username: "ppsn8787",
@@ -10,6 +18,7 @@ var client = wordpress.createClient({
 
 
 function detectInput() {
+
 	$("#upload").prop("disabled", false)
 }
 

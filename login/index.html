@@ -6,8 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login</title>
     <link rel="stylesheet" href="style.css">
-
-    <script type="text/javascript" src="index.js"></script>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="login.js"></script>
 </head>
 <body>
     <div id="particles-js">
@@ -19,7 +22,7 @@
                     <label id="wp_url_label" for="wp_url">WP_URL</label>
                     <input type="text" class="form-control" id="wp_url" placeholder="Enter wordpress url">
                 </div>
-                <div class="form-group  input-form">
+                <div class="form-group input-form">
                     <label id="usert_name_label" for="usr_name">Username</label>
                     <input type="text" class="form-control" id="user_name" placeholder="Enter username">
                 </div>
@@ -30,7 +33,7 @@
                 <div class="checkbox">
                     <label><input type="checkbox"> Remember me</label>
                 </div>
-                <input type="button" class="btn btn-default" onclick="paging()">Submit</input>
+                <input type="button" class="btn btn-default" value="submit" onclick="loginWP()">
             </form>
         </div>
     </div>
