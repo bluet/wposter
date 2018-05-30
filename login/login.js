@@ -19,7 +19,8 @@ function loginWP(){
 
     warning = document.getElementById('warning')
 
-    warning.style.visibility = "hidden"
+    warning.style.visibility = "visible"
+    warning.value = "...請稍等..."
 
     if (wpURL == "" || usrName == "" || passwd == "") {
         warning.value = "請完整填寫資料!"

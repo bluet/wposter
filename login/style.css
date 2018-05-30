@@ -47,7 +47,8 @@ h1{
 .input-form input{
     border-radius: 5px;
     margin:0 auto;
-    width: 30%
+    width: 30%;
+    opacity:0.7;
 }
 
 .input-form label {
@@ -63,6 +64,14 @@ h1{
 
 #submit {
     margin:25px 0px 0px;
+    opacity: 0.7;
+    background-color: white;
+    width: 75px;
+}
+
+#submit:hover {
+    opacity: 1;
+    font-weight: bold;
 }
 
 
@@ -70,12 +79,14 @@ h1{
     visibility: hidden;
     margin: 10px 0px 0px;
     letter-spacing: 0.2em;
-    height: 25px;
-    background-color: red;
+    height: 35px;
     text-align: center;
     border: 0px solid black;
     font-size: 17px;
-    border-radius: 3px;
-    border: 3px outset red;
+    border-radius: 5px;
+    color: black;
+    background-color: red;
+    color: white;
+    opacity: 0.7;
     width: 20%;
 }
