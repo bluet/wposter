@@ -3,10 +3,23 @@ const download = require('image-downloader')
 var fs = require('fs');
 var format_data = [];
 
-var client = wordpress.createClient({
-    url: url,
-    username: pwd,
-    password: name
+// var client = wordpress.createClient({
+//     url: url,
+//     username: pwd,
+//     password: name
+// });
+
+console.log('this is render');
+var client;
+fs.readFile('account.txt', function (err, data) {
+    if (err) throw err;
+    const account = data.toString().split('\n');
+ 
+    client = wordpress.createClient({
+        url: account[0],
+        username: account[1],
+        password: account[2]
+    });
 });
 
 function detectInput() {

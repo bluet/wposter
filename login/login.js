@@ -38,11 +38,11 @@ function loginWP(){
 
 
         if (error) {
-        	
+
             console.log(error);
 
             warning.value = "帳號或密碼錯誤!"
-           	warning.style.visibility = "visible"
+            warning.style.visibility = "visible"
 
         } else {
 
