@@ -9,12 +9,23 @@ var client;
 var wpURL;
 var usrName;
 var passwd;
+var warning;
 function loginWP(){
     console.log('login func');
     ///global
     wpURL = document.getElementById('wp_url').value
     usrName = document.getElementById('user_name').value
     passwd = document.getElementById('pwd').value
+
+    warning = document.getElementById('warning')
+
+    warning.style.visibility = "hidden"
+
+    if (wpURL == "" || usrName == "" || passwd == "") {
+        warning.value = "請完整填寫資料!"
+        warning.style.visibility = "visible"
+    }
+
     ///end global
     client = wordpress.createClient({
         url: wpURL,
@@ -25,12 +36,18 @@ function loginWP(){
     //authentication account
     client.getPosts(function( error, posts ) {
 
-        if(error){
+
+        if (error) {
+        	
             console.log(error);
-        }else{
+
+            warning.value = "帳號或密碼錯誤!"
+           	warning.style.visibility = "visible"
+
+        } else {
 
         	//change html page to ../index.html
-    		// javascript:location.href='../index.html'
+    		javascript:location.href='../index.html'
 
     		//export login value
     		// module.exports.url = wpURL;

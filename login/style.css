@@ -61,6 +61,21 @@ h1{
     border: 3px solid black
 }
 
-.checkbox label {
+#submit {
     margin:25px 0px 0px;
+}
+
+
+#warning {
+    visibility: hidden;
+    margin: 10px 0px 0px;
+    letter-spacing: 0.2em;
+    height: 25px;
+    background-color: red;
+    text-align: center;
+    border: 0px solid black;
+    font-size: 17px;
+    border-radius: 3px;
+    border: 3px outset red;
+    width: 20%;
 }

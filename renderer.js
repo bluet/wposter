@@ -3,22 +3,13 @@ const download = require('image-downloader')
 var fs = require('fs');
 var format_data = [];
 
-var login_data = require("./login/login.js");
-
-//cannot print value : undefined
-console.log(login_data.url)
-console.log(login_data.pwd)
-console.log(login_data.uname)
-
 var client = wordpress.createClient({
-    url: "https://ppsn8787.wordpress.com/",
-    username: "ppsn8787",
-    password: "ilovesn87"
+    url: url,
+    username: pwd,
+    password: name
 });
 
-
 function detectInput() {
-
 	$("#upload").prop("disabled", false)
 }
 
@@ -139,24 +130,18 @@ function show(){
 }
 
 function unchecked() {
-	$("#check-all").prop("disabled", false)
-	$("#not-check-all").prop("disabled", true)
 	for (i in format_data) {
 		$("#" + i).prop("checked", false);
 		console.log(document.getElementById(i).style.checked)
 	}
 }
 
-function change() {
-	$("#check-all").prop("disabled", true)
-	$("#not-check-all").prop("disabled", false)
+function checkall() {
 	for (i in format_data) {
 		$("#" + i).prop("checked", true);
 		console.log(document.getElementById(i).style.checked)
 	}
 }
-
-
 
 function postToWP(){
 	console.log('postTOWP ...');
@@ -248,8 +233,5 @@ function postToWP(){
         // });
 
 }
-
-
-
 
 }
