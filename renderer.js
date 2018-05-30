@@ -2,6 +2,14 @@ var wordpress = require( "wordpress" );
 const download = require('image-downloader')
 var fs = require('fs');
 var format_data = [];
+
+var login_data = require("./login/login.js");
+
+//cannot print value : undefined
+console.log(login_data.url)
+console.log(login_data.pwd)
+console.log(login_data.uname)
+
 var client = wordpress.createClient({
     url: "https://ppsn8787.wordpress.com/",
     username: "ppsn8787",
@@ -10,6 +18,7 @@ var client = wordpress.createClient({
 
 
 function detectInput() {
+
 	$("#upload").prop("disabled", false)
 }
 
@@ -22,25 +31,25 @@ function myfile(File) {
 	var x = document.getElementById('customFile');
 	console.log(x.files[0].path);
 
-	// 'date tag as YYYYMM' : is time 
+	// 'date tag as YYYYMM' : is time
 	// 'field6'             : is image
 	// 'field5'             : is title
-	
+
 	// 'field9'             : is context 1
 	// 'field12'            : is context 2
 	// 'field4'             : is context 3
-	
+
 	// 'field7'             : is tag 1
 	// 'field8'             : is tag 2
-	// 'field10'            : is tag 3 
+	// 'field10'            : is tag 3
 	// 'field11'            : is tag 4
 
-	
-	
+
+
 	var csv = require("csvtojson");
 	csv().fromFile(x.files[0].path).on("end_parsed", function(jsonArrayObj) {
 		// console.log(jsonArrayObj);
-  		
+
 		format_data = [];
   		for(let i in jsonArrayObj){
 
@@ -56,11 +65,11 @@ function myfile(File) {
 					jsonArrayObj[i]['field8'],
 					jsonArrayObj[i]['field10'],
 					jsonArrayObj[i]['field11']]
-			
+
 			//the following properties are for preview
 			let contextWithoutImg = jsonArrayObj[i]['field9']  + '\n\n' +
 					  				jsonArrayObj[i]['field12'] + '\n\n' +
-					 				jsonArrayObj[i]['field4']; 
+					 				jsonArrayObj[i]['field4'];
 
 			let firstText = jsonArrayObj[i]['field9'];
 			let secText = jsonArrayObj[i]['field12'];
@@ -70,7 +79,7 @@ function myfile(File) {
 			let tag2 = jsonArrayObj[i]['field8'];
 			let tag3 = jsonArrayObj[i]['field10'];
 			let tag4 = jsonArrayObj[i]['field11'];
-		
+
 			format_data.push({
 				"time" : time,
 				"image" : image,
@@ -98,9 +107,9 @@ function myfile(File) {
 		// 	console.log('tags : '+format_data[i].tags);
 		// 	console.log('\n\n');
 		// }
-		
+
 	})
-	
+
 }
 
 function show(){
@@ -125,7 +134,7 @@ function show(){
 
 	}
 
-	$("form.showInfoForm").html(stream);	
+	$("form.showInfoForm").html(stream);
 
 }
 
@@ -160,47 +169,85 @@ function postToWP(){
 	}
 
 	console.log(upload_data);
+	//above is correct data
+
+	// download images to local (./testdata/images/)
+	var file;
+
 
 	for(let i in upload_data){
-		client.newPost({
-			title: upload_data[i].title,
-			content: upload_data[i].context,
-			status: "publish",
-			termNames: {
-				"post_tag": upload_data[i].tags
-			}
-		}, function( error, id ) {
-			console.log( id );
-		});
 
-		file = fs.readFileSync('testdata/images/' + i + '.jpg');
-		client.authenticatedCall("wp.uploadFile",{
-			name: i + '.jpg',
-			type: "image/png",
-			bits: file,
-		},function (error, file_info) {
-			console.log("Return from uploadFile:");
-			console.dir(arguments);
-			client.newPost({
-				title: upload_data[i].title,
-				content: upload_data[i].content,
-				status: "publish",
-				thumbnail: file_info.id,
-				termNames: {
-					"post_tag": [upload_data[i].tag1,
-								 upload_data[i].tag2,
-								 upload_data[i].tag3,
-								 upload_data[i].tag4]
-				}
-			},
-			function ( error ) {
-				console.log("Return from newPost:");
+		var options = {
+            url: upload_data[i].image,
+            dest: 'testdata/images/' + i + '.jpg'        // Save to /path/to/dest/photo.jpg
+        }
+        download.image(options).then(({ filename, image }) => {
+			console.log('File saved to /testdata/images/', filename)
+
+
+			file = fs.readFileSync('testdata/images/' + i + '.jpg');
+			client.authenticatedCall("wp.uploadFile",{
+				name: i + '.jpg',
+				type: "image/png",
+				bits: file,
+			},function (error, file_info) {
+				console.log("Return from uploadFile...");
 				console.dir(arguments);
+				client.newPost({
+					title: upload_data[i].title,
+					content: upload_data[i].content,
+					status: "publish",
+					thumbnail: file_info.id,
+					termNames: {
+						"post_tag": [upload_data[i].tag1,
+									upload_data[i].tag2,
+									upload_data[i].tag3,
+									upload_data[i].tag4]
+					}
+				},
+				function ( error ) {
+					console.log("Return from newPost...");
+					console.log(i+1," done!");
+					// console.dir(arguments);
+				});
 			});
-		}
-	);
 
-	}
+
+
+
+        }).catch((err) => {
+			throw err
+			console.log(i,' done');
+		});
+		//above is save images
+
+		// file = fs.readFileSync('testdata/images/' + i + '.jpg');
+        // client.authenticatedCall("wp.uploadFile",{
+        //     name: i + '.jpg',
+        //     type: "image/png",
+        //     bits: file,
+        // },function (error, file_info) {
+        //     console.log("Return from uploadFile:");
+        //     console.dir(arguments);
+        //     client.newPost({
+        //         title: upload_data[i].title,
+        //         content: upload_data[i].content,
+        //         status: "publish",
+        //         thumbnail: file_info.id,
+        //         termNames: {
+        //             "post_tag": [upload_data[i].tag1,
+        //                          upload_data[i].tag2,
+        //                          upload_data[i].tag3,
+        //                          upload_data[i].tag4]
+        //         }
+        //     },
+        //     function ( error ) {
+        //         console.log("Return from newPost:");
+        //         console.dir(arguments);
+        //     });
+        // });
+
+}
 
 
 
