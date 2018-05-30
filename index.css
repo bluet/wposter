@@ -3,12 +3,11 @@
 }
 
 .myfilecontainer {
-	margin:20px 10px 10px;
+	margin:20px 10px 0px;
 	background-color: gray;
 	padding: 5px 0px 5px 17px;
-	border-radius: 5px;
-	background: linear-gradient(135deg,
-	 #bfbfbf 40%, white 70%);
+	background-color:  #bfbfbf ;
+	border-radius: 4px 4px 0px 0px;
 }
 
 .myfilecontainer input {
@@ -32,16 +31,12 @@
 }
 
 .demo-container {
-	/*color: white;*/
-
-	margin: 10px;
+	margin: 0px 10px 0px;
 	padding: 20px;
 	height: 537px;
 	overflow: auto;
 	background-color: #e8e8e8;
-	border-radius: 2px;
-	border:1px solid black;
-	box-shadow: -1px -1px 2px #6b6b6b;
+	border-radius: 0px 0px 4px 4px;
 	font-size: 15px;
 	letter-spacing: 0.1em;
 	text-align: justify;
