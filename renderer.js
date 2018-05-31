@@ -182,6 +182,7 @@ function postToWP(){
 		info.style.visibility = 'visible'
 		$("p.info").html('資料處理中...')
 		container.opacity = 0.5
+		container.pointerEvents = 'none'
 	} 
 
 	console.log(upload_data);
@@ -289,4 +290,5 @@ function closeInfo() {
 	info.style.textAlign = "justify"
 	info.style.visibility = 'hidden'
 	info.style.backgroundColor = "#3f3f3f"
+	document.getElementById("container").style.pointerEvents = 'auto';
 }
