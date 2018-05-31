@@ -1,3 +1,4 @@
+/* jshint esversion: 6 */
 import { app, BrowserWindow } from 'electron';
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -17,7 +18,7 @@ const createWindow = () => {
   });
 
   // and load the index.html of the app.
-  mainWindow.loadURL(`file://${__dirname}/login/index.html`);
+  mainWindow.loadURL(`file://${__dirname}/login/login.html`);
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools();
