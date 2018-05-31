@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+    <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="index.css">
+        <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="renderer.js"></script>
+        <title>Wordpress Poster</title>
+    </head>
+
+    <body>
+        <p id="info" class="info">
+            
+        </p>
+
+        <div id="container" class="container mycontainer">
+
+            <div class="custom-file myfilecontainer">
+
+                <form  method="POST" name="R">
+
+                    <input class="inputbtn btn btn-info custom-file-input" type="file" accept=".csv" id="customFile" name="F1" onchange="detectInput()">
+                    <input id="upload"class="inputbtn btn btn-primary" type="button" value="預覽" onclick="myfile(document.R.F1)" disabled="true">
+                    <input id="not-check-all" class="inputbtn btn btn-warning" type="button" value="取消全選" onclick="unchecked()">
+                    <input id="check-all" class="inputbtn btn btn-warning" type="button" value="全選" onclick="checkall()">
+                    <input id="send" class="inputbtn btn btn-danger" type="button" value="上傳" onclick="postToWP()" disabled="true">
+                </form>
+            </div>
+
+            <div class="demo-container">
+                <form class="showInfoForm" name="form" id="form">
+                </form>
+            </div>
+        </div>    
+        <script>
+        // You can also require other files to run in this process
+        require('./renderer.js')
+        </script>
+
+    </body>
+
+</html>
