@@ -87,3 +87,25 @@
 	background-color: #3b6887;
 	margin: 20px 0px 100px;
 }
+
+#info {
+	visibility: hidden;
+	text-align: justify;
+	
+	max-height: 300px;
+	overflow: auto;
+	width: 200px;
+	padding: 5px;
+	z-index: 1;
+	font-size: 15px;
+
+	position: fixed;
+	top: 100px;
+	left: 247.5px;
+
+	color: white;
+	background-color: #3f3f3f;
+	border: 1px solid black;	
+	box-shadow: -3px -3px 3px black;
+	border-radius: 2px;
+}

@@ -1,5 +1,7 @@
+
 var wordpress = require( "wordpress" );
 var fs = require('fs');
+
 console.log('login js');
 
 // url: "https://ppsn8787.wordpress.com/",
@@ -10,8 +12,11 @@ var wpURL;
 var usrName;
 var passwd;
 var warning;
+
 function loginWP(){
+
     console.log('login func');
+
     ///global
     wpURL = document.getElementById('wp_url').value
     usrName = document.getElementById('user_name').value

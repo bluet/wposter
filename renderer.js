@@ -57,6 +57,8 @@ function myfile(File) {
 		format_data = [];
   		for(let i in jsonArrayObj){
 
+  			let id = i;
+
 			let time    = jsonArrayObj[i]['date tag as YYYYMM'];
 			let image   = jsonArrayObj[i]['field6'];
 			let title   = jsonArrayObj[i]['field5'];
@@ -85,6 +87,7 @@ function myfile(File) {
 			let tag4 = jsonArrayObj[i]['field11'];
 
 			format_data.push({
+				"id" : i,
 				"time" : time,
 				"image" : image,
 				"title" : title,
@@ -123,8 +126,8 @@ function show(){
 	for (let i in format_data) {
 
 		stream += "<label class=\"checkbox-inline\"><input type=\"checkbox\" id=\"" + i + "\" checked/>"
-			 + "<p class=\"preview_id\">" + ++i + ".</p>"
-			 + "<p class=\"preview_title\">" + format_data[--i].title + "</p>"
+			 + "<p class=\"preview_id\">" + ++format_data[i].id + ".</p>"
+			 + "<p class=\"preview_title\">" + format_data[i].title + "</p>"
 			 + "<p><img  class=\"preview_img\" src=\"" + format_data[i].image + "\"></img></p><br>"
 			 + "<p class=\"preview_text\">" + format_data[i].firstText + "</p><br>"
 			 + "<p class=\"preview_text\">" + format_data[i].secText + "</p><br>"
@@ -145,33 +148,47 @@ function show(){
 function unchecked() {
 	for (i in format_data) {
 		$("#" + i).prop("checked", false);
-		console.log(document.getElementById(i).style.checked)
+		// console.log(document.getElementById(i).style.checked)
 	}
 }
 
 function checkall() {
 	for (i in format_data) {
 		$("#" + i).prop("checked", true);
-		console.log(document.getElementById(i).style.checked)
+		// console.log(document.getElementById(i).style.checked)
 	}
 }
 
 function postToWP(){
+
+	var info_text = '正在上傳 . . .'
+
+	//hint the status to user
+	var info = document.getElementById('info')
+	var container = document.getElementById('container').style
+
 	console.log('postTOWP ...');
 	var upload_data = [];
 
+	//insert the user checked data into array
 	for (let i in format_data) {
 		if(document.getElementById(i).checked) {
 			upload_data.push(format_data[i]);
 		}
 	}
 
+	//if user didn't check any data
+	if (upload_data.length != 0) {
+		info.style.visibility = 'visible'
+		$("p.info").html('資料處理中...')
+		container.opacity = 0.5
+	} 
+
 	console.log(upload_data);
 	//above is correct data
 
 	// download images to local (./testdata/images/)
 	var file;
-
 
 	for(let i in upload_data){
 
@@ -205,7 +222,17 @@ function postToWP(){
 				},
 				function ( error ) {
 					console.log("Return from newPost...");
-					console.log(i+1," done!");
+					console.log(i," done!");
+
+					//show the upload success info
+					info_text += ("<br>已上傳編號" + upload_data[i].id + "的資料")
+					$("p.info").html(info_text)
+
+					//at the end of info	
+					if ((upload_data.length - 1) == i) {
+						console.log("in judge")
+						window.setTimeout("uploadSucceed()", 4000)
+					}
 					// console.dir(arguments);
 				});
 			});
@@ -245,6 +272,21 @@ function postToWP(){
         //     });
         // });
 
+	}
+
+	
 }
 
+function uploadSucceed() {
+	info.style.textAlign = "center"
+	$("p.info").html("上傳成功")
+	window.setTimeout("closeInfo()", 1000)
+}
+
+
+function closeInfo() {
+	document.getElementById("container").style.opacity = 1.0
+	info.style.textAlign = "justify"
+	info.style.visibility = 'hidden'
+	info.style.backgroundColor = "#3f3f3f"
 }
