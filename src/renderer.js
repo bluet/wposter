@@ -9,6 +9,7 @@ var format_data = [];
 //     password: name
 // });
 
+
 console.log('this is render');
 var client;
 fs.readFile('account.txt', function (err, data) {
@@ -20,6 +21,10 @@ fs.readFile('account.txt', function (err, data) {
         username: account[1],
         password: account[2]
     });
+
+    //change the document title
+    document.title = "Wordpress Poster - " + client.username
+
 });
 
 function detectInput() {
@@ -146,17 +151,27 @@ function show(){
 }
 
 function unchecked() {
-	for (i in format_data) {
+	for (let i in format_data) {
 		$("#" + i).prop("checked", false);
 		// console.log(document.getElementById(i).style.checked)
 	}
 }
 
 function checkall() {
-	for (i in format_data) {
+	for (let i in format_data) {
 		$("#" + i).prop("checked", true);
 		// console.log(document.getElementById(i).style.checked)
 	}
+}
+
+function logOut() {
+	javascript:location.href='../src/login/login.html'
+	fs.writeFile('account.txt', '', function (err) {
+    	if (err)
+     	  	console.log(err);
+    	else
+        	console.log('Write operation complete.');
+	});
 }
 
 function postToWP(){
@@ -199,7 +214,6 @@ function postToWP(){
         }
         download.image(options).then(({ filename, image }) => {
 			console.log('File saved to /testdata/images/', filename)
-
 
 			file = fs.readFileSync('testdata/images/' + i + '.jpg');
 			client.authenticatedCall("wp.uploadFile",{

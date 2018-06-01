@@ -8,7 +8,7 @@ body{
     color: #f9f3f4;
     position: absolute;
     text-align: center;
-    top: 15%;
+    top: 7%;
     width: 100%;
     line-height: 0.4em;
 }
@@ -33,11 +33,16 @@ h1{
 
 #particles-js{
     background-image: url('login-bg.jpg');
-    height: 100vh;
+    height: 99.483vh;
 }
 
 #main-form {
     margin: 10px auto;
+}
+
+#user_id {
+    text-align: right;
+    padding: 0px 10px 0px 0px;
 }
 
 .input-form {

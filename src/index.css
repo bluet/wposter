@@ -25,7 +25,7 @@
 	left: -5px;
 }
 
-#upload, #check-all, #not-check-all, #send {
+#upload, #check-all, #not-check-all, #send, #logout {
 	position: relative;
 	height: 36px
 }
@@ -33,7 +33,7 @@
 .demo-container {
 	margin: 0px 10px 0px;
 	padding: 20px;
-	height: 537px;
+	height: 450px;
 	overflow: auto;
 	background-color: #e8e8e8;
 	border-radius: 0px 0px 4px 4px;
@@ -101,7 +101,7 @@
 
 	position: fixed;
 	top: 100px;
-	left: 250px;
+	left: 290px;
 
 	color: white;
 	background-color: #3f3f3f;

@@ -13,6 +13,19 @@ var usrName;
 var passwd;
 var warning;
 
+window.onload = function() {
+    fs.readFile('account.txt', function (err, data) {
+        if (err) {
+            throw err;
+        } else {
+            const account = data.toString().split('\n');
+            if (account[0] != '') {
+                javascript:location.href='../index.html'
+            }
+        }
+    });
+}
+
 function loginWP(){
 
     console.log('login func');
