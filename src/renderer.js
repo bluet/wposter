@@ -23,7 +23,7 @@ fs.readFile('account.txt', function (err, data) {
     });
 
     //change the document title
-    document.title = "Wordpress Poster - " + client.username
+    document.title = 'Wordpress Poster - ' + client.username + ' ( ' + account[0] + ' )';
 
 });
 
