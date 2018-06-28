@@ -1,9 +1,12 @@
 .mycontainer {
-	height: 375px;
+	height: 540px;
+	width:250px;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 .myfilecontainer {
-	margin:20px 10px 0px;
+	margin:20px auto 0px;
 	background-color: gray;
 	padding: 5px 0px 5px 17px;
 	background-color:  #bfbfbf ;
@@ -31,9 +34,10 @@
 }
 
 .demo-container {
-	margin: 0px 10px 0px;
+	margin: auto auto;
 	padding: 20px;
 	height: 450px;
+	width: 100%;
 	overflow: auto;
 	background-color: #e8e8e8;
 	border-radius: 0px 0px 4px 4px;
