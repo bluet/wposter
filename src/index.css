@@ -4,9 +4,10 @@
 }
 
 .myfilecontainer {
+	overflow: hidden;
 	padding: 5px 0px 5px 17px;
 	background-color:  #bfbfbf ;
-	border-radius: 4px 4px 0px 0px;
+	font-style: italic;
 }
 
 .myfilecontainer input {
@@ -17,26 +18,63 @@
 	text-align: left;
 }
 
-.custom-file-input {
-	float: left;
-	width: 200px;
-	position: relative;
-	left: -5px;
+.brands {
+	display: inline;
+	font-weight: normal;
+	font-size: 30px;
+	text-shadow: -5px 1px 5px black;
+	color: darkgray;
+	font-weight: bold;
+	letter-spacing: 0.15em;
+	text-decoration: underline;
 }
 
-#upload, #check-all, #not-check-all, #send, #logout {
+#customFile, #upload, #check-all, #not-check-all, #send, #logout {
+	float: right;
+	border-right: 10px;
+	letter-spacing: 0.1em;
+	font-style: normal;
+}
+
+#logout {
 	position: relative;
-	height: 36px
+	right: 5px;
+}
+
+#send {
+	position: relative;
+	right: 10px;
+}
+
+#check-all {
+	position: relative;
+	right: 15px;
+}
+
+#not-check-all {
+	position: relative;
+	right: 20px;
+}
+
+#upload {
+	position: relative;
+	right: 25px;
+}
+
+#customFile  {
+	width: 209px;
+	position: relative;
+	right: 30px;
 }
 
 .demo-container {
 	margin: auto auto;
 	padding: 20px;
-	height: 90.5vh;
+	/*height: 90.735448615vh;*/
+	height: 90vh;
 	width: 100%;
 	overflow: auto;
 	background-color: #e8e8e8;
-	border-radius: 0px 0px 4px 4px;
 	font-size: 15px;
 	letter-spacing: 0.1em;
 	text-align: justify;

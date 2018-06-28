@@ -18,15 +18,15 @@
         <div id="container" class="mycontainer">
 
             <div class="custom-file myfilecontainer">
-
                 <form  method="POST" name="R">
+                    <span class="brands">Wordpress</span>
 
-                    <input class="inputbtn btn btn-info custom-file-input" type="file" accept=".csv" id="customFile" name="F1" onchange="detectInput()">
-                    <input id="upload"class="inputbtn btn btn-primary" type="button" value="預覽" onclick="myfile(document.R.F1)" disabled="true">
-                    <input id="not-check-all" class="inputbtn btn btn-warning" type="button" value="取消全選" onclick="unchecked()">
-                    <input id="check-all" class="inputbtn btn btn-warning" type="button" value="全選" onclick="checkall()">
-                    <input id="send" class="inputbtn btn btn-danger" type="button" value="上傳" onclick="postToWP()" disabled="true">
                     <input id="logout" class="inputbtn btn btn-success" type="button" value="登出" onclick="logOut()">
+                    <input id="send" class="inputbtn btn btn-danger" type="button" value="上傳" onclick="postToWP()" disabled="true">
+                    <input id="check-all" class="inputbtn btn btn-warning" type="button" value="全選" onclick="checkall()">
+                    <input id="not-check-all" class="inputbtn btn btn-warning" type="button" value="取消全選" onclick="unchecked()">
+                    <input id="upload"class="inputbtn btn btn-primary" type="button" value="預覽" onclick="myfile(document.R.F1)" disabled="true">
+                    <input class="inputbtn btn btn-info custom-file-input" type="file" accept=".csv" id="customFile" name="F1" onchange="detectInput()">
                 </form>
             </div>
 
