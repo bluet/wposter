@@ -22,11 +22,11 @@
 	display: inline;
 	font-weight: normal;
 	font-size: 30px;
-	text-shadow: -5px 1px 5px black;
-	color: darkgray;
+	text-shadow: -5px 1px 5px gray;
+	color:#494747;
 	font-weight: bold;
 	letter-spacing: 0.15em;
-	text-decoration: underline;
+	/*text-decoration: underline;*/
 }
 
 #customFile, #upload, #check-all, #not-check-all, #send, #logout {
