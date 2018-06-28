@@ -3,6 +3,7 @@
 	width:250px;
 	margin-right: auto;
 	margin-left: auto;
+	margin: 5px 
 	/*background-color: black;*/
 }
 
@@ -37,7 +38,7 @@
 .demo-container {
 	margin: auto auto;
 	padding: 20px;
-	height: 80vh;
+	height: 85vh;
 	width: 100%;
 	overflow: auto;
 	/*&::-webkit-scrollbar{
