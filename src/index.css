@@ -1,8 +1,9 @@
 .mycontainer {
-	height: 540px;
+	height: 470px;
 	width:250px;
 	margin-right: auto;
 	margin-left: auto;
+	/*background-color: black;*/
 }
 
 .myfilecontainer {
@@ -36,9 +37,12 @@
 .demo-container {
 	margin: auto auto;
 	padding: 20px;
-	height: 450px;
+	height: 80vh;
 	width: 100%;
 	overflow: auto;
+	/*&::-webkit-scrollbar{
+        background-color:transparent;
+    }*/
 	background-color: #e8e8e8;
 	border-radius: 0px 0px 4px 4px;
 	font-size: 15px;
