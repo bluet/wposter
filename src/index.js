@@ -17,6 +17,8 @@ const createWindow = () => {
     minHeight: 600,
   });
 
+  mainWindow.setMenu(null);
+
   // and load the index.html of the app.
   mainWindow.loadURL(`file://${__dirname}/login/login.html`);
 
@@ -30,6 +32,7 @@ const createWindow = () => {
     // when you should delete the corresponding element.
     mainWindow = null;
   });
+
 };
 
 // This method will be called when Electron has finished
