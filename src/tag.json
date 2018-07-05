@@ -1,0 +1,18 @@
+[ 
+	{"original": "實際現有的器物", "modified": "產品"},
+	{"original": "概念創作", "modified": "創作"},
+	{"original": "家具", "modified": "家具"},
+	{"original": "建築", "modified": "建築"},
+	{"original": "廚餐具", "modified": "廚餐具"},
+	{"original": "衣著配飾", "modified": "衣著配飾"},
+	{"original": "文具、工具", "modified": "工具"},
+	{"original": "能源系統", "modified": "能源系統"},
+	{"original": "運動休閒用品", "modified": "運動休閒"},
+	{"original": "醫療健康用品", "modified": "醫療健康"},
+	{"original": "通訊電子產品", "modified": "通訊電子"},
+	{"original": "家庭、辦公電器", "modified": "電器"},
+	{"original": "交通工具", "modified": "交通工具"},
+	{"original": "藝術創作", "modified": "藝術創作"},
+	{"original": "設計意圖和主張", "modified": "設計主張"},
+	{"original": "(這個作品所提供的)服務", "modified": "服務"}
+]

@@ -9,25 +9,13 @@ var format_data = [];
 //     password: name
 // });
 
-var text = '[' +
-	'{"original": "實際現有的器物", "modified": "產品"},'+
-	'{"original": "概念創作", "modified": "創作"},'+
-	'{"original": "家具", "modified": "家具"},'+
-	'{"original": "建築", "modified": "建築"},'+
-	'{"original": "廚餐具", "modified": "廚餐具"},'+
-	'{"original": "衣著配飾", "modified": "衣著配飾"},'+
-	'{"original": "文具、工具", "modified": "工具"},'+
-	'{"original": "能源系統", "modified": "能源系統"},'+
-	'{"original": "運動休閒用品", "modified": "運動休閒"},'+
-	'{"original": "醫療健康用品", "modified": "醫療健康"},'+
-	'{"original": "通訊電子產品", "modified": "通訊電子"},'+
-	'{"original": "家庭、辦公電器", "modified": "電器"},'+
-	'{"original": "交通工具", "modified": "交通工具"},'+
-	'{"original": "藝術創作", "modified": "藝術創作"},'+
-	'{"original": "設計意圖和主張", "modified": "設計主張"},'+
-	'{"original": "(這個作品所提供的)服務", "modified": "服務"}'+
-']'
+var obj;
 
+fs.readFile('../bt_case/src/tag.json', function(err, data) {
+	if (err) throw err;
+
+	obj = JSON.parse(data);
+})
 
 console.log('this is render');
 var client;
@@ -75,7 +63,6 @@ function myfile(File) {
 
 
 	var csv = require("csvtojson");
-	var obj = JSON.parse(text);
 	csv().fromFile(x.files[0].path).on("end_parsed", function(jsonArrayObj) {
 		// console.log(jsonArrayObj);
 
@@ -112,18 +99,10 @@ function myfile(File) {
 			let tag4 = jsonArrayObj[i]['field11'];
 
 			for (var tmp in obj) {
-				if (tag1 == obj[tmp].original) {
-					tag1 = obj[tmp].modified	
-				}	
-				if (tag2 == obj[tmp].original) {
-					tag2 = obj[tmp].modified	
-				}
-				if (tag3 == obj[tmp].original) {
-					tag3 = obj[tmp].modified	
-				}
-				if (tag4 == obj[tmp].original) {
-					tag4 = obj[tmp].modified	
-				}			
+				tag1 = tag1.replace(obj[tmp].original, obj[tmp].modified);
+				tag2 = tag2.replace(obj[tmp].original, obj[tmp].modified);
+				tag3 = tag3.replace(obj[tmp].original, obj[tmp].modified);
+				tag4 = tag4.replace(obj[tmp].original, obj[tmp].modified);
 			}
 
 			format_data.push({
@@ -247,7 +226,7 @@ function postToWP(){
             url: upload_data[i].image,
             dest: 'testdata/images/' + i + '.jpg'        // Save to /path/to/dest/photo.jpg
         }
-        download.image(options).then(({ filename, image }) => {
+        download.image(options).then(({ filename, image }) => {	
 			console.log('File saved to /testdata/images/', filename)
 
 			file = fs.readFileSync('testdata/images/' + i + '.jpg');
