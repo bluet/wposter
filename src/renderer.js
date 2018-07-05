@@ -11,7 +11,7 @@ var format_data = [];
 
 var obj;
 
-fs.readFile('../bt_case/src/tag.json', function(err, data) {
+fs.readFile('tag.json', function(err, data) {
 	if (err) throw err;
 
 	obj = JSON.parse(data);
