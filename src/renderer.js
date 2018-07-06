@@ -273,33 +273,7 @@ function postToWP(){
 			throw err
 			console.log(i,' done');
 		});
-		//above is save images
-
-		// file = fs.readFileSync('testdata/images/' + i + '.jpg');
-        // client.authenticatedCall("wp.uploadFile",{
-        //     name: i + '.jpg',
-        //     type: "image/png",
-        //     bits: file,
-        // },function (error, file_info) {
-        //     console.log("Return from uploadFile:");
-        //     console.dir(arguments);
-        //     client.newPost({
-        //         title: upload_data[i].title,
-        //         content: upload_data[i].content,
-        //         status: "publish",
-        //         thumbnail: file_info.id,
-        //         termNames: {
-        //             "post_tag": [upload_data[i].tag1,
-        //                          upload_data[i].tag2,
-        //                          upload_data[i].tag3,
-        //                          upload_data[i].tag4]
-        //         }
-        //     },
-        //     function ( error ) {
-        //         console.log("Return from newPost:");
-        //         console.dir(arguments);
-        //     });
-        // });
+		//above is save image
 
 	}
 
