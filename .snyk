@@ -11,3 +11,7 @@ patch:
   SNYK-JS-LODASH-567746:
     - csvtojson > lodash:
         patched: '2021-01-19T01:31:12.092Z'
+    - electron > @electron/get > global-tunnel-ng > lodash:
+        patched: '2021-01-19T01:42:04.439Z'
+    - snyk > snyk-nuget-plugin > xml2js > xmlbuilder > lodash:
+        patched: '2021-01-19T01:42:04.439Z'
