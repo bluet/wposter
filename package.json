@@ -58,7 +58,7 @@
     "express": "^4.16.3",
     "formidable": "^1.2.2",
     "image-downloader": "^3.3.0",
-    "jquery": "^3.5.0",
+    "jquery": "^3.5.1",
     "wordpress": "^1.4.1",
     "snyk": "^1.437.4"
   },
