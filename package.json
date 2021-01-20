@@ -50,15 +50,16 @@
     }
   },
   "dependencies": {
-    "electron-compile": "^6.4.2",
+    "electron-compile": "^6.4.4",
     "electron-squirrel-startup": "^1.0.0",
     "csv-parser": "^1.12.1",
     "csvtojson": "^1.1.12",
     "electron": "^10.2.0",
+
     "express": "^4.17.1",
-    "formidable": "^1.2.1",
+    "formidable": "^1.2.2",
     "image-downloader": "^3.3.0",
-    "jquery": "^3.5.0",
+    "jquery": "^3.5.1",
     "wordpress": "^1.4.1",
     "snyk": "^1.437.4"
   },
