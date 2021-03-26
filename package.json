@@ -54,7 +54,7 @@
     "electron-squirrel-startup": "^1.0.0",
     "csv-parser": "^1.12.1",
     "csvtojson": "^1.1.12",
-    "electron": "^11.2.2",
+    "electron": "^11.4.1",
     "image-downloader": "^3.6.0",
     "jquery": "^3.5.1",
     "wordpress": "^1.4.1",
