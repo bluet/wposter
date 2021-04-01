@@ -58,7 +58,7 @@
     "image-downloader": "^3.6.0",
     "jquery": "^3.5.1",
     "wordpress": "^1.4.1",
-    "snyk": "^1.437.4"
+    "snyk": "^1.518.0"
   },
   "devDependencies": {
     "babel-plugin-transform-async-to-generator": "^6.24.1",
